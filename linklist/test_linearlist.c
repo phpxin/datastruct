@@ -7,15 +7,13 @@
 
 #include "apue.h"
 #include "linearlist.h"
-#include "matrix.h"
 
 int linearlist_test();
 BOOL increment(ELE_TYPE *e);
 
 int main()
 {
-	//int flag = linearlist_test();
-	matrixdemo1();
+	linearlist_test();
 
 	return 0;
 }
