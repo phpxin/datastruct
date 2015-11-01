@@ -8,6 +8,7 @@ typedef struct QNode{
 typedef struct {
     QNode *headptr; //队头指针
     QNode *tailptr; //队尾指针
+    size_t length;
 }Queue;
 
 // 构造队列

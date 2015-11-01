@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
 
 
-//娴嬭瘯绋嬪簭锛氳緭鍏ヤ换鎰忓鏁板瓧锛屽�掑彊杈撳嚭
+//测试程序：输入任意多数字，倒叙输出
 void test_input()
 {
     Queue q;
@@ -41,11 +41,15 @@ void test_input()
         printf("queue is empty \n");
 
     }else{
+        printf("this Queue length is %ld \n", q.length);
+
         QElemType e;
         while(!EmptyQueue(&q)){
             DeQueue(&q, &e);
             printf("value is %d \n", (int)e);
         }
+
+        printf("this Queue length is %ld \n", q.length);
     }
 
     DestoryQueue(&q);    

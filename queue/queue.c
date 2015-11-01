@@ -9,6 +9,7 @@ int InitQueue(Queue *q)
 {
     q->headptr = q->tailptr = (QNode *)malloc(sizeof(QNode));
     q->headptr->next = NULL;
+    q->length = 0;
 
     return 1;
 }
@@ -59,8 +60,8 @@ int EnQueue(Queue *q, QElemType e)
     node->next = NULL;
 
     q->tailptr->next = node;
-    
     q->tailptr = node;
+    q->length++;
 
     return 1;
 }
@@ -71,8 +72,8 @@ int DeQueue(Queue *q, QElemType *e)
 
     QNode *node = q->headptr->next ;
     *e = node->data;
-
     q->headptr->next = node->next;
+    q->length--;
 
     free(node) ;
 
