@@ -4,6 +4,32 @@
 
 int main()
 {
+    char *ss = "Hello";
+
+    HString str = {NULL, 0} ;
+
+    StrAssign(&str, ss);
+
+    StrAppend(&str, " world");
+    StrAppend(&str, " world");
+    StrAppend(&str, " world");
+    StrAppend(&str, " world");
+    StrAppend(&str, " world");
+    StrAppend(&str, " world");
+
+
+    char * as = NULL ;
+
+    ToString(&str, &as);
+
+    ClearString( &str );
+
+    printf("%d : %s \n", strlen(as), as);
+
+    return 1;
+}
+
+void test(){
     char *ss = "Hello world";
 
     HString str = {NULL, 0} ;
@@ -44,7 +70,5 @@ int main()
     ClearString(&substr);
 
     if(StrEmpty(&substr))
-        printf("sub 2 is empty\n");
-
-    return 1;
+        printf("sub 2 is empty\n");    
 }
