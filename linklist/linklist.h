@@ -8,7 +8,7 @@
 #ifndef LINKLIST_H_
 #define LINKLIST_H_
 
-typedef int EleType ;
+typedef void* EleType ;
 
 struct _LNode{
 	struct _LNode *prev, *next ;
@@ -23,4 +23,3 @@ typedef struct LLink {
 };
 
 #endif /* LINKLIST_H_ */
-
