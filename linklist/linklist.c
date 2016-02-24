@@ -9,8 +9,12 @@
 int init_llink(LLink *llink)
 {
     llink = (LLink *)calloc(sizeof(LLink), 1);
-    llink->head = NULL;
-    llink->tail = NULL;
+    llink->head = (LNode *)calloc(sizeof(LNode), 1);
+    llink->tail = (LNode *)calloc(sizeof(LNode), 1);
+
+    llink->head->prev = NULL;
+    llink->head->next = NULL;
+
     llink->len = 0;
 
     return 1;

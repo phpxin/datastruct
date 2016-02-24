@@ -10,12 +10,10 @@
 
 typedef void* EleType ;
 
-struct _LNode{
+typedef struct _LNode{
 	struct _LNode *prev, *next ;
 	EleType data;
-};
-
-typedef struct _LNode LNode ;
+} LNode;
 
 typedef struct LLink {
 	LNode *head, *tail;
