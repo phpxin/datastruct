@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <linklist.h>
+#include "linklist.h"
 
 
 int init_llink(LLink *llink)
@@ -13,7 +13,12 @@ int init_llink(LLink *llink)
     llink->tail = (LNode *)calloc(sizeof(LNode), 1);
 
     llink->head->prev = NULL;
-    llink->head->next = NULL;
+    llink->head->next = llink->tail;
+    llink->head->data = 0;
+
+    llink->tail->prev = llink->head;
+    llink->tail->next = NULL;
+    llink->tail->data = 0;
 
     llink->len = 0;
 
@@ -34,11 +39,39 @@ int isempty_llink(LLink *llink)
     return  1;
 }
 
-int add_data_llink(LLink *llink, EleType data)
+//添加数据
+int append_data_llink(LLink *llink, LNode *node)
 {
-    //if(len_l)
+    /* code */
+    //LNode *node = (LNode *)calloc(sizeof(LNode), 1);
+    //LNode *node = _node;
+
+    LNode *prev = llink->tail->prev;
+
+    node->prev = prev ;
+    node->next = llink->tail;
+    //node->data = data ;
+
+    //prev->next = node;
+
+    //llink->tail->prev = node;
+
+    return 1;
+}
+
+void foreach_llink(LLink *llink)
+{
     if (isempty_llink(llink)) {
         /* code */
-        return 0;
+        printf("list is empty");
+        return ;
+    }
+
+    LNode *node = llink->head ;
+
+    while(node->next != NULL)
+    {
+        printf("%d \n", node->data);
+        node = node->next ;
     }
 }
