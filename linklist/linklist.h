@@ -16,8 +16,8 @@ typedef struct _LNode{
 	EleType data;
 } LNode;
 
-typedef struct  {
-	struct _LNode *head; 
+typedef struct _LLink{
+	struct _LNode *head;
 	struct _LNode *tail;
 	int len;
 } LLink;

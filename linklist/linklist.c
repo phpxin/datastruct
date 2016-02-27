@@ -8,7 +8,6 @@
 
 int init_llink(LLink *llink)
 {
-    llink = (LLink *)calloc(1, sizeof(struct _LNode));
     llink->head = (struct _LNode *)calloc(1, sizeof(struct _LNode));
     llink->tail = (struct _LNode *)calloc(1, sizeof(struct _LNode));
 
@@ -44,19 +43,14 @@ int append_data_llink(LLink *llink, EleType e)
 {
     /* code */
     struct _LNode *node = (struct _LNode *)calloc(1, sizeof(struct _LNode));
-    node->prev = (struct _LNode *)calloc(1, sizeof(struct _LNode));
-    node->next = (struct _LNode *)calloc(1, sizeof(struct _LNode));
-    //LNode *node = _node;
-
-    //LNode *prev = llink->tail->prev;
 
     node->prev = llink->tail->prev ;
     node->next = llink->tail;
     node->data = e ;
 
     llink->tail->prev->next = node;
-
     llink->tail->prev = node;
+    llink->len ++ ;
 
     return 1;
 }
@@ -65,11 +59,11 @@ void foreach_llink(LLink *llink)
 {
     if (isempty_llink(llink)) {
         /* code */
-        printf("list is empty");
+        printf("list is empty\n");
         return ;
     }
 
-    LNode *node = llink->head ;
+    LNode *node = llink->head->next ;
 
     while(node->next != NULL)
     {
