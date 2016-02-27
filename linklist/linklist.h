@@ -11,19 +11,21 @@
 typedef int EleType ;
 
 typedef struct _LNode{
-	struct _LNode *prev, *next ;
+	struct _LNode *prev ;
+	struct _LNode *next ;
 	EleType data;
 } LNode;
 
 typedef struct  {
-	LNode *head, *tail;
+	struct _LNode *head; 
+	struct _LNode *tail;
 	int len;
 } LLink;
 
 int init_llink(LLink *llink) ;
 int len_llink(LLink *llink) ;
 int isempty_llink(LLink *llink) ;
-int append_data_llink(LLink *llink, LNode *_node) ;
+int append_data_llink(LLink *llink, EleType e) ;
 void foreach_llink(LLink *llink) ;
 
 #endif /* LINKLIST_H_ */

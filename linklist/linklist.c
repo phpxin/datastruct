@@ -8,9 +8,9 @@
 
 int init_llink(LLink *llink)
 {
-    llink = (LLink *)calloc(sizeof(LLink), 1);
-    llink->head = (LNode *)calloc(sizeof(LNode), 1);
-    llink->tail = (LNode *)calloc(sizeof(LNode), 1);
+    llink = (LLink *)calloc(1, sizeof(struct _LNode));
+    llink->head = (struct _LNode *)calloc(1, sizeof(struct _LNode));
+    llink->tail = (struct _LNode *)calloc(1, sizeof(struct _LNode));
 
     llink->head->prev = NULL;
     llink->head->next = llink->tail;
@@ -40,21 +40,23 @@ int isempty_llink(LLink *llink)
 }
 
 //添加数据
-int append_data_llink(LLink *llink, LNode *node)
+int append_data_llink(LLink *llink, EleType e)
 {
     /* code */
-    //LNode *node = (LNode *)calloc(sizeof(LNode), 1);
+    struct _LNode *node = (struct _LNode *)calloc(1, sizeof(struct _LNode));
+    node->prev = (struct _LNode *)calloc(1, sizeof(struct _LNode));
+    node->next = (struct _LNode *)calloc(1, sizeof(struct _LNode));
     //LNode *node = _node;
 
-    LNode *prev = llink->tail->prev;
+    //LNode *prev = llink->tail->prev;
 
-    node->prev = prev ;
+    node->prev = llink->tail->prev ;
     node->next = llink->tail;
-    //node->data = data ;
+    node->data = e ;
 
-    //prev->next = node;
+    llink->tail->prev->next = node;
 
-    //llink->tail->prev = node;
+    llink->tail->prev = node;
 
     return 1;
 }
