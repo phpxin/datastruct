@@ -5,14 +5,12 @@
 
 /* 自定义数据类型 */
 #define UDF_ELETYPE 1
-typedef int EleType ;
+typedef char* EleType ;
 
 #include "linklist.h"
 
 int equals_callback_llink(EleType e1, EleType e2);
 void iterator_callback_llink(EleType e1);
-
-int sum = 0;
 
 int main(int argc, char* argv[])
 {
@@ -21,34 +19,36 @@ int main(int argc, char* argv[])
 
     init_llink(&link);
 
-    append_data_llink(&link, 1);
-    append_data_llink(&link, 10);
-    append_data_llink(&link, 100);
-    append_data_llink(&link, 1000);
-    append_data_llink(&link, 10000);
-    append_data_llink(&link, 1000);
-    append_data_llink(&link, 10000);
+    append_data_llink(&link, "hellosss");
+    append_data_llink(&link, "world");
 
-    del_data_llink(&link, 1000, equals_callback_llink);
+    del_data_llink(&link, "world", equals_callback_llink);
 
-    sum = 0;
     foreach_llink(&link, iterator_callback_llink);
-    printf("sum is %d \n", sum);
+
 
     return 0;
 }
 
 void iterator_callback_llink(EleType e1)
 {
-    printf("%d \n", (int)e1);
-    sum += (int)e1;
+    printf("%s \n", e1);
+
 }
 
 int equals_callback_llink(EleType e1, EleType e2)
 {
-    if(e1 == e2)
+    size_t n1 = strlen(e1);
+    size_t n2 = strlen(e2);
+    if(n1!=n2)
+    {
+        return 0;
+    }
+
+    if(strncmp(e1,e2,n1) == 0)
     {
         return 1;
     }
+
     return 0;
 }

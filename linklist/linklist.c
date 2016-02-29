@@ -38,6 +38,34 @@ int isempty_llink(LLink *llink)
     return  1;
 }
 
+int del_data_llink(LLink *llink, EleType e, int (*equals_callback_llink)(EleType , EleType ))
+{
+    int del_count = 0;
+
+    if (isempty_llink(llink)) {
+        /* code */
+        printf("list is empty\n");
+        return del_count;
+    }
+
+    LNode *node = llink->head->next ;
+
+    while(node->next != NULL)
+    {
+        //printf("%d \n", node->data);
+        if (equals_callback_llink(node->data, e)) {
+            /* code */
+            node->prev->next = node->next;
+            node->next->prev = node->prev;
+            free(node) ;
+            del_count++;
+        }
+        node = node->next ;
+    }
+
+    return del_count;
+}
+
 //添加数据
 int append_data_llink(LLink *llink, EleType e)
 {
@@ -55,7 +83,7 @@ int append_data_llink(LLink *llink, EleType e)
     return 1;
 }
 
-void foreach_llink(LLink *llink)
+void foreach_llink(LLink *llink, void (*iterator_callback_llink)(EleType))
 {
     if (isempty_llink(llink)) {
         /* code */
@@ -67,7 +95,8 @@ void foreach_llink(LLink *llink)
 
     while(node->next != NULL)
     {
-        printf("%d \n", node->data);
+        //printf("%d \n", node->data);
+        iterator_callback_llink(node->data);
         node = node->next ;
     }
 }
