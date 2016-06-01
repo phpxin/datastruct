@@ -4,6 +4,24 @@
 
 int main()
 {
+    char *ss = "world" ;
+
+    HString str = {NULL, 0} ;
+
+    StrAssign(&str, ss);
+    StrInsert(&str, 3, "1234");
+
+    char *as = NULL ;
+
+    ToString(&str, &as);
+    ClearString(&str);
+
+    printf("%s \n", as);
+
+    return 1;
+}
+
+void test2(){
     char *ss = "Hello";
 
     HString str = {NULL, 0} ;
@@ -26,7 +44,6 @@ int main()
 
     printf("%d : %s \n", strlen(as), as);
 
-    return 1;
 }
 
 void test(){

@@ -34,7 +34,7 @@ int Index(HString *hstr, HString *sub, int pos);
 int StrAppend(HString *hs, const char *_str) ;
 
 //插入字符串
-int StrInsert(HString *hs, const char *_str) ;
+int StrInsert(HString *hs, size_t pos, const char *_str) ;
 
 //获取字符串,获取\0结尾的c风格字符串
 int ToString(HString *hs, char **dst);

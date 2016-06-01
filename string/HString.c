@@ -141,7 +141,29 @@ int StrAppend(HString *hs, const char *_str) {
 }
 
 //插入字符串
-//int StrInsert(HString *hs, const char *_str) ;
+int StrInsert(HString *hs, size_t pos, const char *_str){
+
+    if (pos > hs->len-1){
+        return 0;
+    }
+
+    size_t ext_len = strlen(_str) ;
+
+    hs->ch = (char *)realloc(hs->ch, hs->len+ext_len);
+
+    size_t tmp_len = hs->len - pos ;
+
+    char *tmp = (char *)malloc(tmp_len);
+    memset(tmp, '\0', tmp_len);
+
+    strncpy(tmp, hs->ch + pos, tmp_len);
+    strncpy(hs->ch + pos, _str, ext_len);
+    strncpy(hs->ch + pos + ext_len, tmp, tmp_len);
+
+    free(tmp);
+    hs->len = hs->len+ext_len;
+    return 1;
+}
 
 
 int ToString(HString *hs, char **dst){

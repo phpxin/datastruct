@@ -8,7 +8,7 @@
 
 //high level io
 #include <sys/uio.h>
-#include <sys/sendfile.h>
+//#include <sys/sendfile.h>
 #include <sys/mman.h>
 
 //system type
@@ -41,7 +41,7 @@
 #include <sys/shm.h>
 #include <sys/select.h>
 #include <poll.h>
-#include <sys/epoll.h>
+//#include <sys/epoll.h>
 
 //debug
 #include <assert.h>
